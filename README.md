@@ -42,8 +42,7 @@ It follows a modular **MVC architecture** for scalability and maintainability, w
    - Admin creates restaurant, categories, and menu items  
    - Customers browse and place orders  
    - Staff updates order status (e.g., Pending → Preparing → Delivered)
-
-     ---
+---
 
 ## 🛠️ Tech Stack
 - **Node.js** – Runtime environment  
