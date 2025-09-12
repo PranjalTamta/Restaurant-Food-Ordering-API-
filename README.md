@@ -26,19 +26,7 @@ It follows a modular **MVC architecture** for scalability and maintainability, w
 
 ---
 
-## 📂 Project Structure
-├── config/ # Database connection & environment config
-├── controllers/ # Request handling logic
-├── middleware/ # Auth & validation middleware
-├── models/ # Mongoose schemas & models
-├── routes/ # API routes
-├── utils/ # Helper functions
-├── server.js # App entry point
 
-markdown
-Copy code
-
----
 
 ## ⚡ How It Works
 1. **Authentication**  
@@ -53,7 +41,9 @@ Copy code
 3. **Restaurant Workflow**  
    - Admin creates restaurant, categories, and menu items  
    - Customers browse and place orders  
-   - Staff updates order status (e.g., Pending → Preparing → Delivered)  
+   - Staff updates order status (e.g., Pending → Preparing → Delivered)
+
+     ---
 
 ## 🛠️ Tech Stack
 - **Node.js** – Runtime environment  
