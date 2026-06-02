@@ -1,4 +1,4 @@
-# 🍽️ Restaurant Food Ordering API
+# 🍽️ FoodFlow — Restaurant Management Platform 
 
 A backend system for a restaurant food ordering application built with **Node.js, Express.js, MongoDB, and Mongoose**.  
 It follows a modular **MVC architecture** for scalability and maintainability, with secure **JWT authentication** and role-based access control for **admins, staff, and customers**.
