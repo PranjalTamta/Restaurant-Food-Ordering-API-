@@ -90,7 +90,7 @@ const Category = ({ selectedCategory, onSelectCategory }) => {
         <div className="px-8 py-4 text-2xl font-medium">
           <h1>Categories</h1>
         </div>
-        <div className=" grid grid-cols-4 md:grid-cols-8 gap-6 ">
+        <div className=" grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6 ">
           {visibleCategories.map((item) => (
             <div
               className="flex flex-col items-center cursor-pointer"
@@ -102,16 +102,16 @@ const Category = ({ selectedCategory, onSelectCategory }) => {
               }
             >
               <img
-                className={`h-28 w-28 rounded-full object-cover border-4 ${selectedCategory === item.name ? "border-orange-500" : "border-transparent"}`}
+                className={`h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28 rounded-full object-cover border-4 ${selectedCategory === item.name ? "border-orange-500" : "border-transparent"}`}
                 src={item.imageUrl}
                 alt={item.name}
               />
               <p
-                className={
+                className={`text-sm md:text-base mt-1 text-center ${
                   selectedCategory === item.name
                     ? "text-orange-500 font-semibold"
                     : ""
-                }
+                }`}
               >
                 {item.name}
               </p>
