@@ -14,7 +14,25 @@ connectDb();
 var app = express();
 
 //cors
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000", // Development frontend
+  "http://localhost:5173", // Vite default port
+  "http://localhost:5174", // Vite alternative port (if 5173 is in use)
+  process.env.FRONTEND_URL, // Production frontend URL (set in deployment)
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(morgan("dev"));
 //route

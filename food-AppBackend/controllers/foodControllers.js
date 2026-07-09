@@ -128,7 +128,7 @@ const getFoodByResturantController = async (req, res) => {
     res.status(200).send({
       success: true,
       message: "Food based on resturant",
-      food,
+      Foods: food,
     });
   } catch (error) {
     console.log(error);
@@ -151,7 +151,7 @@ const foodUpdateController = async (req, res) => {
         description,
         price,
       },
-      { new: true }
+      { new: true },
     );
     if (!updateFood) {
       return res.status(500).send({

@@ -20,7 +20,7 @@ router.get("/getAll", getAllFood);
 //GET Food By ID
 router.get("/getAll/:id", authMiddleware, getFoodByID);
 //get food by resturant
-router.get("/getByResturant/:id", authMiddleware, getFoodByResturantController);
+router.get("/getByResturant/:id", getFoodByResturantController);
 //Update
 router.put("/update/:id", authMiddleware, foodUpdateController);
 //Delete

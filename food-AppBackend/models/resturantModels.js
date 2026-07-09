@@ -12,6 +12,9 @@ var resturantSchema = new mongoose.Schema(
       default:
         "https://stock.adobe.com/in/search?k=restaurant&asset_id=324739203",
     },
+    description: {
+      type: String,
+    },
     foods: {
       type: Array,
     },
@@ -55,7 +58,7 @@ var resturantSchema = new mongoose.Schema(
       title: { type: String },
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 //export
 module.exports = mongoose.model("Resturant", resturantSchema);
