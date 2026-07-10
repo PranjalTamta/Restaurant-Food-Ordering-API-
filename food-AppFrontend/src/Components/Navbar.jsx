@@ -17,7 +17,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
-        setShowResdults(false);
+        setShowResults(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -47,63 +47,65 @@ const Navbar = () => {
   };
   const SearchDropdown = () =>
     showResults && query ? (
-      <div className="absolute top-full mt-2 w-full bg-white border rounded-xl shadow-lg max-h-96 overflow-y-auto z-50">
-        {matchedResturants.length === 0 && matchedFoods.length === 0 ? (
-          <p className="px-4 py-6 text-center text-gray-400">
-            No results for "{query}"
-          </p>
-        ) : (
-          <>
-            {matchedResturants.length > 0 && (
-              <div>
-                <p className="px-4 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase">
-                  Restaurants
-                </p>
-                {matchedResturants.map((r) => (
-                  <div
-                    key={r._id}
-                    onClick={() => goToResturant(r._id)}
-                    className="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer"
-                  >
-                    <img
-                      src={r.imageUrl}
-                      alt={r.title}
-                      className="w-12 h-12 object-cover rounded"
-                    />
-                    <div>
-                      <p className="font-medium">{r.title}</p>
-                      <p className="text-sm text-gray-500">{r.description}</p>
+      <div className="absolute left-0 top-full mt-2 w-full bg-white border rounded-xl shadow-lg overflow-hidden z-50">
+        <div className="max-h-96 sm:max-h-96 overflow-y-auto">
+          {matchedResturants.length === 0 && matchedFoods.length === 0 ? (
+            <p className="px-4 py-6 text-center text-gray-400">
+              No results for "{query}"
+            </p>
+          ) : (
+            <>
+              {matchedResturants.length > 0 && (
+                <div>
+                  <p className="px-4 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase">
+                    Restaurants
+                  </p>
+                  {matchedResturants.map((r) => (
+                    <div
+                      key={r._id}
+                      onClick={() => goToResturant(r._id)}
+                      className="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer"
+                    >
+                      <img
+                        src={r.imageUrl}
+                        alt={r.title}
+                        className="w-12 h-12 object-cover rounded"
+                      />
+                      <div>
+                        <p className="font-medium">{r.title}</p>
+                        <p className="text-sm text-gray-500">{r.description}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
-            {matchedFoods.length > 0 && (
-              <div>
-                <p className="px-4 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase">
-                  Dishes
-                </p>
-                {matchedFoods.map((f) => (
-                  <div
-                    key={f._id}
-                    onClick={() => goToResturant(f.resturant)}
-                    className="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer"
-                  >
-                    <img
-                      src={f.imgUrl}
-                      alt={f.title}
-                      className="w-12 h-12 object-cover rounded"
-                    />
-                    <div>
-                      <p className="font-medium">{f.title}</p>
-                      <p className="text-sm text-gray-500">₹{f.price}</p>
+                  ))}
+                </div>
+              )}
+              {matchedFoods.length > 0 && (
+                <div>
+                  <p className="px-4 pt-3 pb-1 text-xs font-semibold text-gray-400 uppercase">
+                    Dishes
+                  </p>
+                  {matchedFoods.map((f) => (
+                    <div
+                      key={f._id}
+                      onClick={() => goToResturant(f.resturant)}
+                      className="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer"
+                    >
+                      <img
+                        src={f.imgUrl}
+                        alt={f.title}
+                        className="w-12 h-12 object-cover rounded"
+                      />
+                      <div>
+                        <p className="font-medium">{f.title}</p>
+                        <p className="text-sm text-gray-500">₹{f.price}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
     ) : null;
   return (
@@ -120,7 +122,10 @@ const Navbar = () => {
           </h1>
 
           {/* Desktop */}
-          <div ref={searchRef} className="relative w-[450px] lg:w-[600px]">
+          <div
+            ref={searchRef}
+            className="hidden md:block relative w-[450px] lg:w-[600px]"
+          >
             <div className="flex items-center border border-gray-300 rounded-xl px-4 py-2 shadow-sm w-[450px] lg:w-[600px]">
               <FiSearch className="text-gray-500 text-xl mr-3" />
 
