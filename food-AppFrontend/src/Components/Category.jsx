@@ -94,7 +94,7 @@ const Category = ({ selectedCategory, onSelectCategory }) => {
           {visibleCategories.map((item) => (
             <div
               className="flex flex-col items-center cursor-pointer"
-              key={item.id}
+              key={item._id}
               onClick={() =>
                 onSelectCategory(
                   selectedCategory === item.name ? null : item.name,

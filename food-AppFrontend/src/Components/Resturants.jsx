@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 // import burger from "../assets/burger.jpg";
 // import pizza from "../assets/pizza.jpg";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import biryani from "../assets/biryani.jpg";
 import axios from "axios";
 import API_URL from "../config/apiConfig";
+import { useAppData } from "../context/DataContext";
 
 // export const resturant = [
 //   {
@@ -68,28 +69,7 @@ import API_URL from "../config/apiConfig";
 
 const Resturants = ({ selectedCategory }) => {
   const navigate = useNavigate();
-  const [resturant, setResturant] = useState([]);
-  const [foods, setFoods] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [resturantRes, foodRes] = await Promise.all([
-          axios.get(`${API_URL}/api/v1/resturant/getAll`),
-          axios.get(`${API_URL}/api/v1/food/getAll`),
-        ]);
-        setResturant(resturantRes.data.resturants || []);
-        setFoods(foodRes.data.Foods || []);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const { resturants: resturant, foods, loading, error } = useAppData();
 
   if (loading) return <p className="px-8 py-4">Loading restaurants...</p>;
   if (error) return <p className="px-8 py-4 text-red-500">Error: {error}</p>;
