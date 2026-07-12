@@ -51,15 +51,7 @@ import API_URL from "../config/apiConfig";
 //       "The perfect combination of pineapple and cheese on a crispy crust.",
 //   },
 // ];
-const Categories = [
-  "All",
-  "Veg",
-  "Non-Veg",
-  "Breakfast",
-  "Fast Food",
-  "Lunch",
-  "Dinner",
-];
+const Categories = ["All", "Veg", "Non-Veg", "Beverages"];
 const ResturantDetails = () => {
   const { id } = useParams();
   const [resturant, setResturant] = useState(null);
@@ -94,17 +86,20 @@ const ResturantDetails = () => {
 
   const menu = foods.filter((food) => String(food.resturant) === String(id));
 
+  // const filteredMenu = menu.filter((item) => {
+  //   if (activeCategory === "All") return true;
+  //   if (activeCategory === "Veg") {
+  //     return item.category?.toLowerCase() === "veg";
+  //   }
+  //   if (activeCategory === "Non-Veg") {
+  //     return item.category?.toLowerCase() !== "veg";
+  //   }
+  //   return item.category === activeCategory;
+  // });
   const filteredMenu = menu.filter((item) => {
     if (activeCategory === "All") return true;
-    if (activeCategory === "Veg") {
-      return item.category?.toLowerCase() === "veg";
-    }
-    if (activeCategory === "Non-Veg") {
-      return item.category?.toLowerCase() !== "veg";
-    }
-    return item.category === activeCategory || item.foodTags === activeCategory;
+    return item.category?.toLowerCase() === activeCategory.toLowerCase();
   });
-
   return (
     <div className="px-8 py-6">
       <h1 className="text-3xl font-bold mt-4">{resturant.title}</h1>

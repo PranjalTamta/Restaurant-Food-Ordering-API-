@@ -25,6 +25,8 @@ var foodSchema = new mongoose.Schema(
     },
     category: {
       type: String,
+      enum: ["Veg", "Non-Veg", "Breakfast", "Fast Food", "Lunch", "Dinner"],
+      required: true,
     },
     code: {
       type: String,
@@ -47,7 +49,7 @@ var foodSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 //export
 module.exports = mongoose.model("Foods", foodSchema);
