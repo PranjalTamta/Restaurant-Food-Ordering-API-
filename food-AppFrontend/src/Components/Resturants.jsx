@@ -71,7 +71,43 @@ const Resturants = ({ selectedCategory }) => {
   const navigate = useNavigate();
   const { resturants: resturant, foods, loading, error } = useAppData();
 
-  if (loading) return <p className="px-8 py-4">Loading restaurants...</p>;
+  if (loading) {
+    return (
+      <div className="px-8 py-6">
+        <div className="h-8 w-1/3 mt-4 rounded bg-gray-200 animate-pulse" />
+        <div className="w-full h-[60vh] mt-4 rounded-xl bg-gray-200 animate-pulse" />
+        <div className="h-4 w-2/3 mt-4 rounded bg-gray-200 animate-pulse" />
+
+        <div className="h-6 w-40 mt-8 rounded bg-gray-200 animate-pulse" />
+        <div className="flex flex-wrap gap-4 mt-4">
+          {Array(4)
+            .fill(0)
+            .map((_, i) => (
+              <div
+                key={i}
+                className="h-10 w-24 rounded-full bg-gray-200 animate-pulse"
+              />
+            ))}
+        </div>
+
+        <div className="flex flex-wrap gap-4 mt-4">
+          {Array(6)
+            .fill(0)
+            .map((_, i) => (
+              <div
+                key={i}
+                className="border rounded-lg p-3 w-full sm:w-[45%] md:w-[30%]"
+              >
+                <div className="w-full h-40 rounded bg-gray-200 animate-pulse" />
+                <div className="h-3 w-16 mt-2 rounded-full bg-gray-200 animate-pulse" />
+                <div className="h-4 w-1/2 mt-2 rounded bg-gray-200 animate-pulse" />
+                <div className="h-3 w-1/4 mt-1 rounded bg-gray-200 animate-pulse" />
+              </div>
+            ))}
+        </div>
+      </div>
+    );
+  }
   if (error) return <p className="px-8 py-4 text-red-500">Error: {error}</p>;
 
   const filteredResturants = selectedCategory

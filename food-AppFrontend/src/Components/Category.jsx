@@ -83,7 +83,25 @@ const Category = ({ selectedCategory, onSelectCategory }) => {
   //   },
   // ];
   const visibleCategories = showAll ? categories : categories.slice(0, 8);
-  if (loading) return <p className="px-8 py-4">Loading categories...</p>;
+  if (loading) {
+    return (
+      <div>
+        <div className="px-8 py-4 text-2xl font-medium">
+          <h1>Categories</h1>
+        </div>
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6">
+          {Array(8)
+            .fill(0)
+            .map((_, i) => (
+              <div className="flex flex-col items-center" key={i}>
+                <div className="h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28 rounded-full bg-gray-200 animate-pulse" />
+                <div className="h-3 w-12 mt-2 rounded bg-gray-200 animate-pulse" />
+              </div>
+            ))}
+        </div>
+      </div>
+    );
+  }
   return (
     <>
       <div>
